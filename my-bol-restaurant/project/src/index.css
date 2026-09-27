@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink-950 text-ink-100 font-sans antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    @apply bg-gold-400 text-ink-950;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Italiana', 'Cormorant Garamond', serif;
+  }
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold-200 via-gold-400 to-gold-200 bg-clip-text text-transparent;
+  }
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gold-400 text-ink-950 font-medium tracking-wide uppercase text-sm transition-all duration-300 ease-out-expo hover:bg-gold-300 hover:shadow-lg hover:shadow-gold-400/20 hover:-translate-y-0.5;
+  }
+  .btn-outline-gold {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-gold-400/40 text-gold-200 font-medium tracking-wide uppercase text-sm transition-all duration-300 ease-out-expo hover:border-gold-400 hover:bg-gold-400/10 hover:text-gold-100;
+  }
+  .section-label {
+    @apply text-gold-400 text-xs font-sans font-medium tracking-[0.3em] uppercase;
+  }
+  .heading-1 {
+    @apply font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] text-ink-50;
+  }
+  .heading-2 {
+    @apply font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.1] text-ink-50 font-light;
+  }
+  .heading-3 {
+    @apply font-serif text-3xl sm:text-4xl leading-[1.15] text-ink-50 font-light;
+  }
+  .body-text {
+    @apply text-ink-300 leading-[1.7] text-base font-light;
+  }
+  .card-glass {
+    @apply bg-ink-900/60 backdrop-blur-md border border-ink-700/50;
+  }
+  .luxury-card {
+    @apply relative overflow-hidden border border-ink-700/50 bg-ink-900/30 backdrop-blur-sm transition-all duration-500 ease-out-expo hover:border-gold-400/40 hover:bg-ink-900/50;
+  }
+  .luxury-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-400/0 to-transparent transition-all duration-700 ease-out-expo;
+  }
+  .luxury-card:hover::before {
+    @apply via-gold-400/60;
+  }
+  .gold-line {
+    @apply relative;
+  }
+  .gold-line::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 h-px bg-gold-400 transition-all duration-500 ease-out-expo w-0;
+  }
+  .gold-line:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .animate-delay-100 { animation-delay: 0.1s; }
+  .animate-delay-200 { animation-delay: 0.2s; }
+  .animate-delay-300 { animation-delay: 0.3s; }
+  .animate-delay-400 { animation-delay: 0.4s; }
+  .animate-delay-500 { animation-delay: 0.5s; }
+  .animate-delay-600 { animation-delay: 0.6s; }
+  .animate-delay-700 { animation-delay: 0.7s; }
+  .animate-delay-800 { animation-delay: 0.8s; }
+  .animate-delay-1000 { animation-delay: 1s; }
+  .opacity-start-0 { opacity: 0; }
+  .text-shadow-lux {
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+  }
+  .text-shadow-gold {
+    text-shadow: 0 0 40px rgba(200, 169, 106, 0.3);
+  }
+  .bg-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1a1410; }
+::-webkit-scrollbar-thumb { background: #5c4f42; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #7a6957; }
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Page curtain transition */
+.page-enter {
+  animation: pageEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes pageEnter {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
