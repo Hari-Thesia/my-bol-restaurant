@@ -5,7 +5,6 @@ import {
 } from 'lucide-react';
 import type { Page } from '@/hooks/usePageState';
 import Reveal from '@/components/Reveal';
-import { supabase } from '@/lib/supabase';
 import { IMAGES, RESTAURANT } from '@/data/images';
 
 interface ReservationsProps {
@@ -44,24 +43,8 @@ export default function Reservations({ onNavigate }: ReservationsProps) {
     setStatus('submitting');
     setErrorMsg('');
 
-    try {
-      const { error } = await supabase.from('reservations').insert({
-        name: form.name,
-        phone: form.phone,
-        email: form.email || null,
-        party_size: typeof form.partySize === 'string' ? 9 : form.partySize,
-        reservation_date: form.date,
-        reservation_time: form.time,
-        occasion: form.occasion,
-        special_requests: form.specialRequests || null,
-      });
-
-      if (error) throw error;
-      setStatus('success');
-    } catch (err) {
-      setStatus('error');
-      setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again or call us.');
-    }
+    // Simulate success — no backend
+await new Promise((resolve) => setTimeout(resolve, 500));
   };
 
   // Build WhatsApp message from form data
